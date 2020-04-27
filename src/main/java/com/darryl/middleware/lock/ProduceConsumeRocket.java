@@ -3,6 +3,7 @@ package com.darryl.middleware.lock;
 /**
  * @Auther: Darryl
  * @Description: 火箭的生产和消费，为了测试多个线程并发过程中产生的假死现象；
+ * 这和死锁也是有差别的；
  * @Date: 2020/04/26
  */
 public class ProduceConsumeRocket {
