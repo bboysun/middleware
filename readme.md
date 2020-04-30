@@ -13,3 +13,11 @@
 当发生了这样的问题时，我们可以通过jstack + pid来查看是否有假死的现象发生。那我们怎么解决这个问题呢？
 
 我们要用notifyAll()的方法去唤醒所有的等待线程去执行相关任务，这样避免了只唤醒同类型的对象类。
+
+#### redis缓存
+
+今天封装了redis的API接口，使用jedisPool获取redis客户端后需要注意的是每次执行完操作后需要调用close()方法关闭客户端，不然会造成并发情况卡死的现象。
+
+目前提供了分布式锁，通过postman并发请求测试了分布式锁的可用性，同时使用ResponseEntity改进了restful请求。
+
+在修改gitignore后，忽略了redis的配置文件上传到github，但是因为缓存的原因并不会直接生效。需要先git rm -r --cached . 然后再git add .
