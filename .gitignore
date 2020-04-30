@@ -31,4 +31,4 @@ build/
 .vscode/
 
 ### my config ###
-/config/
+**/src/main/resources/config/
