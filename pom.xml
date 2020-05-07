@@ -66,6 +66,12 @@
 			<version>28.2-jre</version>
 		</dependency>
 
+		<!-- zookeeper https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>2.12.0</version>
+		</dependency>
 
 	</dependencies>
 
