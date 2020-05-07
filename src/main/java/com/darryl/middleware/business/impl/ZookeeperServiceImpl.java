@@ -1,12 +1,14 @@
 package com.darryl.middleware.business.impl;
 
 import com.darryl.middleware.business.ZookeeperService;
+import com.darryl.middleware.config.zookeeper.ZkConfig;
 import com.darryl.middleware.util.ZkClient;
 import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 /**
  * @Auther: Darryl
@@ -16,11 +18,13 @@ import javax.annotation.PreDestroy;
 @Service
 public class ZookeeperServiceImpl implements ZookeeperService {
 
-	private static final String ZK_ADDRESS = "localhost:2181";
+	//private static final String ZK_ADDRESS = "localhost:2181";
+	@Resource
+	private ZkConfig zkConfig;
 
 	@PostConstruct
 	public void init() {
-		ZkClient.getZkClient(ZK_ADDRESS);
+		ZkClient.getZkClient(zkConfig.getAddress());
 	}
 
 	@PreDestroy
