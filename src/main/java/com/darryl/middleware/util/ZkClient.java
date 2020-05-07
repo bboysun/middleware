@@ -129,6 +129,12 @@ public class ZkClient {
 		}
 	}
 
+	/**
+	 * 针对某一个节点添加自定义监听器
+	 * @param zkClient 客户端实例对象
+	 * @param node 待监听节点
+	 * @param listener 自定义监听器
+	 */
 	public static void addWatcher(CuratorFramework zkClient, String node, NodeCacheListener listener) {
 		NodeCache nodeCache = new NodeCache(zkClient, node, false);
 		try {
