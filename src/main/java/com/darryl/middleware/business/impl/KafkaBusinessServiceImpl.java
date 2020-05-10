@@ -2,7 +2,12 @@ package com.darryl.middleware.business.impl;
 
 import com.darryl.middleware.business.KafkaBusinessService;
 import com.darryl.middleware.util.KafkaProducerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class KafkaBusinessServiceImpl implements KafkaBusinessService{
+	private Logger log = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private KafkaProducerService producerService;
 
@@ -28,5 +35,13 @@ public class KafkaBusinessServiceImpl implements KafkaBusinessService{
 		}).start();
 	}
 
-
+	@Override
+	@KafkaListener(topics = "darryl")
+	public void receiveMessage(String message, @Header(KafkaHeaders.OFFSET) Integer offset,
+	                           @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
+	                           @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+		// 目前我们接收到kafka消息后，就直接打印出即可
+		log.info("Processing topic = {}, partition = {}, offset = {}, workUnit = {}",
+				topic, partition, offset, message);
+	}
 }

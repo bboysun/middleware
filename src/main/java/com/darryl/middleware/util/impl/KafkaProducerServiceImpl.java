@@ -43,7 +43,7 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
 		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 		// 延迟发送消息，单位毫秒，便于提高kafka吞吐量
 		//properties.put(ProducerConfig.LINGER_MS_CONFIG, kafkaConfig.getLingerMs());
-		producer =new KafkaProducer<>(properties);
+		producer = new KafkaProducer<>(properties);
 	}
 
 	@PreDestroy

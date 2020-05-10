@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
  * @Date: 2020/05/09
  */
 @Component
-@Configuration
+//@Configuration
 @PropertySource(value = {"classpath:config/kafka.yml"}, encoding = "UTF-8")
-@ConfigurationProperties(prefix = "darryl.middleware.kafka.producer")
+@ConfigurationProperties(prefix = "darryl.middleware.kafka")
 public class KafkaConfig {
 
 	@Value("${add}")
@@ -23,6 +23,17 @@ public class KafkaConfig {
 	private String clientId;
 	@Value("${linger_ms}")
 	private String lingerMs;
+
+	@Value("${group_id}")
+	private String groupId;
+	@Value("${auto_commit}")
+	private boolean autoCommit;
+	@Value("${auto_commit_interval}")
+	private String autoCommitInterval;
+	@Value("${session_timeout}")
+	private String sessionTimeout;
+	@Value("${auto_offset_reset}")
+	private String autoOffsetReset;
 
 	public String getAddress() {
 		return address;
@@ -46,5 +57,45 @@ public class KafkaConfig {
 
 	public void setLingerMs(String lingerMs) {
 		this.lingerMs = lingerMs;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
+
+	public boolean isAutoCommit() {
+		return autoCommit;
+	}
+
+	public void setAutoCommit(boolean autoCommit) {
+		this.autoCommit = autoCommit;
+	}
+
+	public String getAutoCommitInterval() {
+		return autoCommitInterval;
+	}
+
+	public void setAutoCommitInterval(String autoCommitInterval) {
+		this.autoCommitInterval = autoCommitInterval;
+	}
+
+	public String getSessionTimeout() {
+		return sessionTimeout;
+	}
+
+	public void setSessionTimeout(String sessionTimeout) {
+		this.sessionTimeout = sessionTimeout;
+	}
+
+	public String getAutoOffsetReset() {
+		return autoOffsetReset;
+	}
+
+	public void setAutoOffsetReset(String autoOffsetReset) {
+		this.autoOffsetReset = autoOffsetReset;
 	}
 }
