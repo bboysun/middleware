@@ -1,0 +1,21 @@
+darryl:
+  middleware:
+    kafka:
+      # kafka broker
+      add: 127.0.0.1:9092
+      # 生产者ID
+      client_id: darryl-producer
+      # 延迟发送的时间，便于提高吞吐量
+      linger_ms: 1
+      # 消费组ID
+      group_id: darryl-consumer
+      # 消费完消息自动提交
+      auto_commit: true
+      # 自动提交的时间间隔 毫秒单位
+      auto_commit_interval: 1000
+      # 连接session超时时间
+      session_timeout: 30000
+      # 自动消费策略
+      auto_offset_reset: earliest
+      # 默认主题名称
+      topic: darryl

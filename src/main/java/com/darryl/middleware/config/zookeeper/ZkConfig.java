@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Configuration
-@PropertySource(value = {"classpath:config/zookeeper.yml"}, encoding = "UTF-8")
+@PropertySource(value = {"classpath:zookeeper.yml"}, encoding = "UTF-8")
 @ConfigurationProperties(prefix = "darryl.middleware.zookeeper")
 public class ZkConfig {
 

@@ -1,0 +1,4 @@
+darryl:
+  middleware:
+    zookeeper:
+      address: localhost:2181

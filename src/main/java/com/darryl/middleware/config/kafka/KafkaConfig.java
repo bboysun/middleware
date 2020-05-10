@@ -2,7 +2,6 @@ package com.darryl.middleware.config.kafka;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 //@Configuration
-@PropertySource(value = {"classpath:config/kafka.yml"}, encoding = "UTF-8")
+@PropertySource(value = {"classpath:kafka.yml"}, encoding = "UTF-8")
 @ConfigurationProperties(prefix = "darryl.middleware.kafka")
 public class KafkaConfig {
 
@@ -23,6 +22,9 @@ public class KafkaConfig {
 	private String clientId;
 	@Value("${linger_ms}")
 	private String lingerMs;
+
+	@Value("${topic}")
+	private String topic;
 
 	@Value("${group_id}")
 	private String groupId;
@@ -34,6 +36,14 @@ public class KafkaConfig {
 	private String sessionTimeout;
 	@Value("${auto_offset_reset}")
 	private String autoOffsetReset;
+
+	public String getTopic() {
+		return topic;
+	}
+
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
 
 	public String getAddress() {
 		return address;
