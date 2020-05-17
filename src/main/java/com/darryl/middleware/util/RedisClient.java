@@ -40,4 +40,12 @@ public interface RedisClient {
 	 * @return 是否释放分布式锁
 	 */
 	boolean releaseDistributedLock(String lockKey, String requestId);
+
+	/**
+	 * redis 构建一个延迟队列的生产者，将消息发送到默认的延迟队列"DELAY_LIST" 可以类比kafka专业的消息中间件
+	 * @param delayTime 延迟队列的延迟时间，映射到redis中zset的score
+	 * @param message 延迟队列的中的消息体，映射到redis中zset的value
+	 * @return 是否已经成功的将消息放入到redis的延迟队列中
+	 */
+	boolean delayListProducer(int delayTime, String message);
 }
